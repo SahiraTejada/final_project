@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'api_service.dart';
-import 'model/user_model.dart';
+import 'models/user_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,47 +32,28 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late List<UserModel>? _userModel = [];
+  //late List<UserModel>? _userModel = [];
   @override
   void initState() {
     super.initState();
-    _getData();
+   // _getData();
   }
-
+/*
   void _getData() async {
     _userModel = (await ApiService().getUsers())!;
     Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
   }
-
+*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Avance proyecto final'),
       ),
-      body: _userModel == null || _userModel!.isEmpty
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : ListView.builder(
-              itemCount: _userModel!.length,
-              itemBuilder: (context, index) {
-                return Card(
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(20),
-                        child: Text(_userModel![index].username,style: TextStyle(
-                          fontSize: 20,fontWeight: FontWeight.w500
-                        ),)),
-                       
-                      
-                  
-                    ],
-                  ),
-                );
-              },
-            ),
+      body: Column(
+        children: const [
+            Text("Proyecto Final")
+      ],)
     );
   }
 }
