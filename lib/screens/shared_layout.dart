@@ -3,6 +3,7 @@ import 'package:final_project/screens/orders_screen.dart';
 import 'package:final_project/screens/overview_screen.dart';
 import 'package:final_project/screens/products_screen.dart';
 import 'package:final_project/screens/users_screen.dart';
+import 'package:final_project/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/navbar.dart';
@@ -27,6 +28,23 @@ class _SharedLayoutState extends State<SharedLayout> {
       extendBody: true,
       drawer: SideMenu(loggedInUser: widget.loggedInUser),
       appBar: AppBar(
+        actions: <Widget>[
+          PopupMenuButton(
+            icon: const Icon(Icons.more_horiz),
+            offset: Offset(0, MediaQuery.of(context).padding.top),
+            itemBuilder: (context) {
+              return <PopupMenuItem>[
+                PopupMenuItem(
+                  child:
+                      Text('Log out', style: nameStyle.copyWith(fontSize: 16)),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ];
+            },
+          ),
+        ],
         title: Text(pageTitles[currentPageIndex]),
         automaticallyImplyLeading: false,
         leading: Builder(
