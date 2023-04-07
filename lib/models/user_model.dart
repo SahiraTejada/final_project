@@ -1,3 +1,26 @@
+class UsersModel {
+  UsersModel({
+    required this.users,
+    required this.total,
+    required this.skip,
+    required this.limit,
+  });
+
+  final List<dynamic> users;
+  final int total;
+  final int skip;
+  final int limit;
+
+  factory UsersModel.fromJson(Map<String, dynamic> json) {
+    return UsersModel(
+      users: json['users'],
+      total: json['total'],
+      skip: json['skip'],
+      limit: json['limit'],
+    );
+  }
+}
+
 class UserModel {
   UserModel({
     required this.id,
