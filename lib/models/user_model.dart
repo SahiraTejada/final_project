@@ -6,18 +6,28 @@ class UsersModel {
     required this.limit,
   });
 
-  final List<dynamic> users;
+  final List<UserModel> users;
   final int total;
   final int skip;
   final int limit;
 
   factory UsersModel.fromJson(Map<String, dynamic> json) {
     return UsersModel(
-      users: json['users'],
+      users: List<UserModel>.from(
+          json['users'].map((user) => UserModel.fromJson(user))),
       total: json['total'],
       skip: json['skip'],
       limit: json['limit'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['users'] = users.map((v) => v.toJson()).toList();
+    data['total'] = total;
+    data['skip'] = skip;
+    data['limit'] = limit;
+    return data;
   }
 }
 
@@ -53,5 +63,18 @@ class UserModel {
       image: json['image'],
       token: json['token'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['username'] = username;
+    data['email'] = email;
+    data['firstName'] = firstName;
+    data['lastName'] = lastName;
+    data['gender'] = gender;
+    data['image'] = image;
+    data['token'] = token;
+    return data;
   }
 }

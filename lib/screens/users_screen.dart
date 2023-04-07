@@ -41,6 +41,7 @@ class _UsersScreenState extends State<UsersScreen> {
       future: getUsers(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
+          print(snapshot);
           return ListView.builder(
             shrinkWrap: true,
             itemCount: snapshot.data!.users.length,
@@ -49,13 +50,13 @@ class _UsersScreenState extends State<UsersScreen> {
                 children: <Widget>[
                   CircleAvatar(
                     backgroundImage:
-                        NetworkImage(snapshot.data!.users[index]['image']),
+                        NetworkImage(snapshot.data!.users[index].image),
                     backgroundColor: Colors.white,
                   ),
                   Column(
                     children: <Widget>[
-                      Text(snapshot.data!.users[index]['username']),
-                      Text(snapshot.data!.users[index]['email']),
+                      Text(snapshot.data!.users[index].username),
+                      Text(snapshot.data!.users[index].email),
                     ],
                   )
                 ],
