@@ -1,17 +1,34 @@
-import 'dart:convert';
-/*
-Working with a raw Future<http.Response> isn’t very convenient. To make your life easier, convert the http.Response into a Dart object.
-*/
-//Convert between JSON strings and a list of UserModel objects.
-
-/*List<UserModel> userModelFromJson(String str) =>
-    List<UserModel>.from(json.decode(str).map((x) => UserModel.fromJson(x)));
-
-String userModelToJson(List<UserModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-    */
-
 class UserModel {
-  
+  UserModel({
+    required this.id,
+    required this.username,
+    required this.email,
+    required this.firstName,
+    required this.lastName,
+    required this.gender,
+    required this.image,
+    this.token,
+  });
 
+  final int id;
+  final String username;
+  final String email;
+  final String firstName;
+  final String lastName;
+  final String gender;
+  final String image;
+  final String? token;
+
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
+      id: json['id'],
+      username: json['username'],
+      email: json['email'],
+      firstName: json['firstName'],
+      lastName: json['lastName'],
+      gender: json['gender'],
+      image: json['image'],
+      token: json['token'],
+    );
+  }
 }
