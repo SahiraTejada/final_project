@@ -25,7 +25,6 @@ class _SharedLayoutState extends State<SharedLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawerEnableOpenDragGesture: false,
-      extendBody: true,
       drawer: SideMenu(loggedInUser: widget.loggedInUser),
       appBar: AppBar(
         actions: <Widget>[

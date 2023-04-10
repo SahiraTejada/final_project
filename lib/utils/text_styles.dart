@@ -30,3 +30,15 @@ TextStyle buttonTextStyle = const TextStyle(
   color: Colors.white,
   fontWeight: FontWeight.w600,
 );
+
+TextStyle orderOrangeStyle = const TextStyle(
+  fontSize: 16,
+  color: orange,
+  fontWeight: FontWeight.w700,
+);
+
+TextStyle orderBlackStyle = const TextStyle(
+  fontSize: 16,
+  color: titleColor,
+  fontWeight: FontWeight.w700,
+);
