@@ -22,7 +22,7 @@ ThemeData customTheme = ThemeData(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       padding:
-          const MaterialStatePropertyAll(EdgeInsets.symmetric(vertical: 13)),
+          const MaterialStatePropertyAll(EdgeInsets.symmetric(vertical: 15)),
       shape: MaterialStateProperty.resolveWith<OutlinedBorder>(
         (states) => RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(40),
@@ -40,7 +40,7 @@ ThemeData customTheme = ThemeData(
     ),
     filled: true,
     fillColor: Colors.white,
-    contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(40),
     ),

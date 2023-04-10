@@ -5,6 +5,7 @@ import 'package:final_project/utils/colors.dart';
 import 'package:final_project/utils/text_styles.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
@@ -74,9 +75,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 runSpacing: 40,
                 alignment: WrapAlignment.center,
                 children: <Widget>[
-                  Image.asset(
-                    'assets/images/shopintec-logo.png',
-                    width: 170,
+                  SvgPicture.asset(
+                    'assets/images/shopintec-logo.svg',
+                    width: MediaQuery.of(context).size.width / 2,
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -106,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            minimumSize: const Size.fromHeight(0),
+                            minimumSize: const Size.fromHeight(50),
                           ),
                           onPressed: () {
                             attemptLogin(context);

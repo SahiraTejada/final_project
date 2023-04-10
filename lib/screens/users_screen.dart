@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:math';
+
+import 'package:final_project/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:final_project/utils/colors.dart';
+
 import '../models/user_model.dart';
 
 class UsersScreen extends StatefulWidget {
@@ -25,16 +27,6 @@ class _UsersScreenState extends State<UsersScreen> {
     }
   }
 
-  void attemptGetUsers() {
-    getUsers()
-        .then(
-          (users) => print(users.users),
-        )
-        .catchError(
-          (error) => print(error),
-        );
-  }
-
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -45,7 +37,6 @@ class _UsersScreenState extends State<UsersScreen> {
       future: getUsers(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          print(snapshot);
           return ListView.builder(
             shrinkWrap: true,
             itemCount: snapshot.data!.users.length,
@@ -54,9 +45,9 @@ class _UsersScreenState extends State<UsersScreen> {
                 height: height / 9,
                 width: width / 6,
                 margin: EdgeInsets.symmetric(
-                  horizontal: width * 0.05, 
-                  vertical: height * 0.02),
-                padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 8),
+                    horizontal: width * 0.05, vertical: height * 0.02),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(22),
@@ -76,25 +67,20 @@ class _UsersScreenState extends State<UsersScreen> {
                             borderRadius: const BorderRadius.all(
                               Radius.circular(5),
                             ),
-                            color: 
-                              Colors.primaries[random.nextInt(Colors.primaries.length)]
+                            color: Colors.primaries[
+                                    random.nextInt(Colors.primaries.length)]
                                 [random.nextInt(9) * 100],
                             border: Border.all(
-                              width: 0.3,
-                              color: titleColor.withOpacity(0.4)
-                            ),
+                                width: 0.3, color: titleColor.withOpacity(0.4)),
                           ),
                         ),
                         Container(
                           width: 50,
                           height: 50,
                           decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage(
-                                snapshot.data!.users[index].image
-                              )
-                            )
-                          ),
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      snapshot.data!.users[index].image))),
                         ),
                       ],
                     ),
@@ -104,20 +90,17 @@ class _UsersScreenState extends State<UsersScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(snapshot.data!.users[index].username,
-                          style: const TextStyle(
-                            color: Color.fromRGBO(26, 32, 44, 1),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600
-                          )
-                        ),
+                            style: const TextStyle(
+                                color: Color.fromRGBO(26, 32, 44, 1),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600)),
                         const SizedBox(height: 6),
                         Text(
                           snapshot.data!.users[index].email,
                           style: const TextStyle(
-                            color: Color.fromRGBO(26, 32, 44, 1),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400
-                          ),
+                              color: Color.fromRGBO(26, 32, 44, 1),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400),
                         ),
                       ],
                     )

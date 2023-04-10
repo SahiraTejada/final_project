@@ -3,6 +3,7 @@ import 'package:final_project/utils/colors.dart';
 import 'package:final_project/utils/text_styles.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -29,9 +30,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 runSpacing: 40,
                 alignment: WrapAlignment.center,
                 children: <Widget>[
-                  Image.asset(
-                    'assets/images/shopintec-logo.png',
-                    width: 170,
+                  SvgPicture.asset(
+                    'assets/images/shopintec-logo.svg',
+                    width: MediaQuery.of(context).size.width / 2,
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
