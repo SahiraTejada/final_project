@@ -39,13 +39,13 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  void attemptLogin() {
+  void attemptLogin(BuildContext context) {
     login()
         .then(
           (user) => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => SharedLayout(loggedInUser: user),
+              builder: (_) => SharedLayout(loggedInUser: user),
             ),
           ),
         )
@@ -108,7 +108,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: ElevatedButton.styleFrom(
                             minimumSize: const Size.fromHeight(0),
                           ),
-                          onPressed: attemptLogin,
+                          onPressed: () {
+                            attemptLogin(context);
+                          },
                           child: Text('Login', style: buttonTextStyle)),
                     ],
                   ),
