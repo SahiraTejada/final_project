@@ -1,6 +1,8 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
 import '../models/products_model.dart';
 
 class ProductsScreen extends StatefulWidget {
@@ -23,16 +25,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
     }
   }
 
-  void attemptGetProducts() {
-    getProducts()
-        .then(
-          (products) => print(products.products),
-        )
-        .catchError(
-          (error) => print(error),
-        );
-  }
-
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -42,7 +34,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
       future: getProducts(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
-          print(snapshot);
           return ListView.builder(
             shrinkWrap: true,
             itemCount: snapshot.data!.products.length,
@@ -144,39 +135,3 @@ class _ProductsScreenState extends State<ProductsScreen> {
     );
   }
 }
-
-
-
- 
-
-// ListView.builder(
-//                 itemCount: _products.length,
-//                 itemBuilder: (context, index) {
-//                   return ListTile(
-//                     tileColor: Colors.white,
-//                     title: Text(_products[index].productName),
-//                     subtitle: Text(_products[index].productType),
-//                     leading: CircleAvatar(
-//                       child: Image.network(
-//                         _products[index].productImage,
-//                       ),
-//                     ),
-//                   );
-//                 })
-
-// ListTile(
-//               contentPadding: EdgeInsets.all(20),
-//               title: Text(_products[index].productName),
-//               subtitle: Text(_products[index].productType),
-//               leading: CircleAvatar(
-//                 child: Image.network(
-//                   _products[index].productImage,
-//                 ),
-//               ),
-//               trailing: Column(
-//                 children: [
-//                   Text(_products[index].productPrice),
-//                   Text(_products[index].productPercentaje + "%")
-//                 ],
-//               ),
-//             )

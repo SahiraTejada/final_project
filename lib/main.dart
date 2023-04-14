@@ -1,7 +1,4 @@
 import 'package:final_project/screens/login_screen.dart';
-import 'package:final_project/screens/orders_screen.dart';
-import 'package:final_project/screens/products_screen.dart';
-import 'package:final_project/screens/users_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'utils/custom_theme.dart';
